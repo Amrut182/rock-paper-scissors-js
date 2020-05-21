@@ -1,0 +1,1 @@
+Making a simple Rock-Paper-Scissors game using only Javascript(play on console by right-clicking the page and then click inspect).
