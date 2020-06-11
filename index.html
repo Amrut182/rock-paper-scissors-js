@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    //Function Definitions
+    function computerPlay() {
+        let choices = ["Rock", "Paper", "Scissors"];
+        let computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        return computerChoice;
+      }
+
+    function playSingleRound(userChoice, computerChoice) {
+        //Converting both to uppercase for input to be case insensitive
+        userChoice = userChoice.toUpperCase();
+        computerChoice = computerChoice.toUpperCase();
+
+        //When user input is Rock
+        if(userChoice === "ROCK" && computerChoice ==="ROCK") {
+            console.log("Tie!");
+            alert("Tie!");
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "ROCK" && computerChoice ==="PAPER") {
+            console.log("You Lose, Paper beats Rock");
+            alert("You Lose, Paper beats Rock");
+            computerScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "ROCK" && computerChoice ==="SCISSORS") {
+            console.log("You Win, Rock beats Scissors");
+            alert("You Win, Rock beats Scissors");
+            userScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+          
+        //when user input is paper
+        if(userChoice === "PAPER" && computerChoice ==="ROCK") {
+            console.log("You Win, Paper beats Rock");
+            alert("You Win, Paper beats Rock");
+            userScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "PAPER" && computerChoice ==="PAPER") {
+            console.log("Tie!");
+            alert("Tie!");
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "PAPER" && computerChoice ==="SCISSORS") {
+            console.log("You Lose, Scissors beats Paper");
+            alert("You Lose, Scissors beats Paper");
+            computerScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        //When user input is scissors
+        if(userChoice === "SCISSORS" && computerChoice ==="ROCK") {
+            console.log("You Lose, Rock beats Scissors");
+            alert("You Lose, Rock beats Scissors");
+            computerScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "SCISSORS" && computerChoice ==="PAPER") {
+            console.log("You Win, Scissors beats Paper");
+            alert("You Win, Scissors beats Paper");
+            userScore++;
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+
+        if(userChoice === "SCISSORS" && computerChoice ==="SCISSORS") {
+            console.log("Tie!");
+            alert("Tie!");
+            console.log(`User:${userScore}, Computer:${computerScore}`);
+        }
+      }
+
+    function game() {
+        let numOfRounds = 5;
+        while (numOfRounds) { 
+            let userInput = prompt("Enter Rock, Paper or Scissors(Not Case Sensitive)..."); 
+            //function that checks if user input entered is valid
+            function validUserInput() {
+                if(!(userInput.toUpperCase() ==="ROCK" ||userInput.toUpperCase() ==="PAPER" ||userInput.toUpperCase() ==="SCISSORS")){
+                alert("Please enter correct spelling.");
+                userInput = prompt("Enter Rock, Paper or Scissors(Not Case Sensitive)..."); 
+                validUserInput(); //recursion
+                }
+            }
+
+            validUserInput();
+            playSingleRound(userInput, computerPlay());
+
+            numOfRounds--;
+        }
+      }
+
+    function results() {
+        if(userScore > computerScore) {
+        console.log("You win overall!");
+        alert("You win overall!");
+        } else if(computerScore > userScore) {
+        console.log("Computer wins!");
+        alert("Computer wins!");
+        } else {
+        console.log("Tie overall!");
+        alert("Tie overall!");
+        }
+    }
+
+    function gameAndResults() {
+        game();
+        results();
+    }
+    
+    //End of function definitions
+    //Variable declarations and Function Call 
+    let userScore = 0; //Initial scores initialized to 0
+    let computerScore = 0;
+    gameAndResults();
+  </script>
+</body>
+</html>
